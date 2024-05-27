@@ -22,11 +22,9 @@ export interface NavigationProps {
 export function Navigation(props: NavigationProps) {
   const bannerHeight = useBannerSize();
   const navigate = useNavigate();
-  const { loggedIn } = useAuth();
 
   return (
     <>
-      {/* lightbar */}
       {!props.noLightbar ? (
         <div
           className="absolute inset-x-0 top-0 flex h-[88px] items-center justify-center"
@@ -87,22 +85,7 @@ export function Navigation(props: NavigationProps) {
               >
                 <BrandPill clickable header />
               </Link>
-              <a
-                href={conf().DISCORD_LINK}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xl text-white tabbable rounded-full"
-              >
-                <IconPatch icon={Icons.DISCORD} clickable downsized />
-              </a>
-              <a
-                href={conf().GITHUB_LINK}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xl text-white tabbable rounded-full"
-              >
-                <IconPatch icon={Icons.GITHUB} clickable downsized />
-              </a>
+
               <a
                 onClick={() => navigate("/discover")}
                 rel="noreferrer"
@@ -110,11 +93,6 @@ export function Navigation(props: NavigationProps) {
               >
                 <IconPatch icon={Icons.RISING_STAR} clickable downsized />
               </a>
-            </div>
-            <div className="relative pointer-events-auto">
-              <LinksDropdown>
-                {loggedIn ? <UserAvatar withName /> : <NoUserAvatar />}
-              </LinksDropdown>
             </div>
           </div>
         </div>
